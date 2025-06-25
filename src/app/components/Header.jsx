@@ -44,7 +44,7 @@ const Header = () => {
           transition={{ duration: 0.5, delay: 0.9 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-        href="/sample-resume.pdf" download className='flex items-center gap-2 px-10 py-3 border border-gray-500 rounded-full'>
+        href="/Hendra Latieful Maajid-resume.pdf" download className='flex items-center gap-2 px-10 py-3 border border-gray-500 rounded-full'>
             My CV <Image src={assets.download_icon} alt='download-icon' className='w-4'/>
         </motion.a>
       </div>
