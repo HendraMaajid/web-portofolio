@@ -8,10 +8,7 @@ import vscode from './vscode.png';
 import firebase from './firebase.png';
 import figma from './figma.png';
 import git from './git.png';
-import mongodb from './mongodb.png';
 import right_arrow_white from './right-arrow-white.png';
-import logo from './logo.png';
-import logo_dark from './logo_dark.png';
 import mail_icon from './mail_icon.png';
 import mail_icon_dark from './mail_icon_dark.png';
 import download_icon from './download-icon.png';
@@ -46,10 +43,7 @@ export const assets = {
     firebase,
     figma,
     git,
-    mongodb,
     right_arrow_white,
-    logo,
-    logo_dark,
     mail_icon,
     mail_icon_dark,
     download_icon,
@@ -77,23 +71,23 @@ export const assets = {
 export const workData = [
     {
         title: 'Web RS Yolanda',
-        description: 'Web Design',
-        bgImage: '/work-1.png',
+        description: 'HTML, CSS, JavaScript, PHP, MySQL',
+        bgImage: '/rs-yolanda.png',
     },
     {
         title: 'Tukutick',
-        description: 'Web Design',
-        bgImage: '/work-2.png',
+        description: 'Laravel, Bootstrap, MySQL',
+        bgImage: '/TukuTick.png',
     },
     {
         title: 'Movie Deck',
-        description: 'Web Design',
-        bgImage: '/work-3.png',
+        description: 'React Js, Tailwind CSS, TMDB API',
+        bgImage: '/movie_deck.png',
     },
     {
         title: 'LAMA',
-        description: 'Mobile App',
-        bgImage: '/work-4.png',
+        description: 'HTML, CSS, JavaScript, Angular, Firebase,',
+        bgImage: '/LAMA.png',
     },
 ]
 

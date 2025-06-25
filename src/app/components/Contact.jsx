@@ -62,23 +62,23 @@ const Contact = () => {
                 <motion.input
                 initial={{ x: -50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1.3 }}
+                transition={{ duration: 0.5, delay: 1 }}
                 name='name' type="text" placeholder='Enter Your Name' className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white' required/>
                 <motion.input
                 initial={{ x: 50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1.5 }}
+                transition={{ duration: 0.5, delay: 1.2 }}
                 name='email' type="email" placeholder='Enter Your Email' className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white' required/>
             </div>
             <motion.textarea
             initial={{ y: -50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 1.7 }}
+            transition={{ duration: 0.5, delay: 1.3 }}
             name='message' placeholder="Enter Your Message" rows='6' id="" className='w-full p-4 border-[0.5px] outline-none border-gray-400 rounded-md bg-white mb-6' required></motion.textarea>
             <motion.button
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 1.9 }}
+            transition={{ duration: 0.5, delay: 1.4 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             type='submit' className='flex items-center justify-between gap-2 px-8 py-3 mx-auto text-white duration-500 rounded-full bg-black/80 w-max hover:bg-black'>
