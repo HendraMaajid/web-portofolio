@@ -68,26 +68,31 @@ export const assets = {
     saya
 };
 
+// assets.js
 export const workData = [
     {
         title: 'Web RS Yolanda',
         description: 'HTML, CSS, JavaScript, PHP, MySQL',
         bgImage: '/rs-yolanda.png',
+        githubLink: 'https://github.com/HendraMaajid/Website-Rumah-Sakit-Yolandaa' // Ganti dengan link GitHub Anda
     },
     {
         title: 'Tukutick',
         description: 'Laravel, Bootstrap, MySQL',
         bgImage: '/TukuTick.png',
+        githubLink: 'https://github.com/HendraMaajid/tukutick' // Ganti dengan link GitHub Anda
     },
     {
         title: 'Movie Deck',
         description: 'React Js, Tailwind CSS, TMDB API',
         bgImage: '/movie_deck.png',
+        githubLink: 'https://github.com/HendraMaajid/MovieDeck' // Ganti dengan link GitHub Anda
     },
     {
         title: 'LAMA',
-        description: 'HTML, CSS, JavaScript, Angular, Firebase,',
+        description: 'HTML, CSS, JavaScript, Angular, Firebase',
         bgImage: '/LAMA.png',
+        githubLink: 'https://github.com/HendraMaajid/LAMA' // Ganti dengan link GitHub Anda
     },
 ]
 
