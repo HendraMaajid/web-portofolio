@@ -94,6 +94,18 @@ export const workData = [
         bgImage: '/LAMA.png',
         githubLink: 'https://github.com/HendraMaajid/LAMA' // Ganti dengan link GitHub Anda
     },
+    {
+        title: 'Learning Management System with AI Chatbot(RAG)',
+        description: 'Tailwind CSS, Alpine Js, Laravel, Livewire, PostgreSQL',
+        bgImage: '/lms.png',
+        githubLink: ''
+    },
+    {
+        title: 'Marii Cup Tournament Padel',
+        description: 'Laravel, React Js, Inertia JS, Animate UI, MySQL',
+        bgImage: '/mariicup.png',
+        githubLink: 'https://mariicup.com/'
+    }
 ]
 
 export const infoList = [
