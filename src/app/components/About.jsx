@@ -103,12 +103,18 @@ const About = ({ language }) => {
              initial={{ y: 20, opacity: 0 }}
              whileInView={{ y: 0, opacity: 1 }}
              transition={{ duration: 0.5, delay: 1.1 }}
-            className='flex items-center gap-4 sm:gap-5'>
+            className='flex flex-wrap items-center gap-3 sm:gap-4'>
                 {toolsData.map((tool, index) => (
                     <motion.li
                     whileHover={{ scale: 1.1 }}
                     key={index} className='duration-500 hover:-translate-y-1'>
-                        <Image src={tool} alt='tool-icon' className='w-8'/>
+                        {tool.icon ? (
+                          <Image src={tool.icon} alt={tool.name} className='w-8'/>
+                        ) : (
+                          <span className='px-3 py-1 text-sm text-gray-700 border border-gray-300 rounded-full dark:border-slate-600 dark:text-gray-300'>
+                            {tool.name}
+                          </span>
+                        )}
                     </motion.li>
                 ))}
             </motion.ul>

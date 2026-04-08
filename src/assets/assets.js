@@ -31,6 +31,10 @@ import send_icon from './send-icon.png';
 import right_arrow_bold from './right-arrow-bold.png';
 import right_arrow_bold_dark from './right-arrow-bold-dark.png';
 import saya from './saya.jpg';
+import antigravity from './antigravity.png';
+import redis from './redis.svg';
+import dbeaver from './dbeaver.png';
+import linux from './linux.svg';
 
 export const assets = {
     code_icon,
@@ -65,7 +69,11 @@ export const assets = {
     send_icon,
     right_arrow_bold,
     right_arrow_bold_dark,
-    saya
+    saya,
+    antigravity,
+    redis,
+    dbeaver,
+    linux
 };
 
 // assets.js
@@ -227,5 +235,11 @@ export const infoList = [
 ];
 
 export const toolsData = [
-    assets.vscode, assets.figma, assets.git
+    { name: 'VS Code', icon: assets.vscode },
+    { name: 'Figma', icon: assets.figma },
+    { name: 'Git', icon: assets.git },
+    { name: 'Antigravity', icon: assets.antigravity },
+    { name: 'Redis', icon: assets.redis },
+    { name: 'DBeaver', icon: assets.dbeaver },
+    { name: 'Linux', icon: assets.linux }
 ];
