@@ -36,17 +36,17 @@ const Header = ({ language }) => {
         initial={{ y:-20, opacity:0 }}
         whileInView={{ y:0, opacity:1 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-       className='flex mb-3 text-xl md:text-2xl font-ovo'>{text.greeting}</motion.h3>
+       className='flex mb-3 text-xl text-gray-800 md:text-2xl font-ovo dark:text-gray-200'>{text.greeting}</motion.h3>
       <motion.h1
         initial={{ y:-20, opacity:0 }}
         whileInView={{ y:0, opacity:1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-      className='text-2xl sm:text-4xl lg:text-5xl font-ovo'>{text.role}</motion.h1>
+      className='text-2xl sm:text-4xl lg:text-5xl font-ovo text-gray-900 dark:text-white'>{text.role}</motion.h1>
       <motion.p
         initial={{ y:-20, opacity:0 }}
         whileInView={{ y:0, opacity:1 }}
         transition={{ duration: 0.5, delay: 0.7 }}
-      className='max-w-2xl mx-auto font-ovo'>
+      className='max-w-2xl mx-auto text-gray-700 font-ovo dark:text-gray-300'>
         {text.bio}
       </motion.p>
       <div className='flex flex-col items-center gap-4 mt-8 sm:flex-row'>
@@ -56,14 +56,14 @@ const Header = ({ language }) => {
           transition={{ duration: 0.5, delay: 0.8 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-        href="#contact" className='flex items-center gap-2 px-10 py-3 text-white bg-black border border-white rounded-full'>{text.contact} <Image src={assets.right_arrow_white} alt='arr-w-icon' className='w-4'/></motion.a>
+        href="#contact" className='flex items-center gap-2 px-10 py-3 text-white bg-black border border-white rounded-full dark:border-slate-800 dark:bg-cyan-500 dark:text-slate-900'>{text.contact} <Image src={assets.right_arrow_white} alt='arr-w-icon' className='w-4'/></motion.a>
         <motion.a
           initial={{ y:20, opacity:0 }}
           whileInView={{ y:0, opacity:1 }}
           transition={{ duration: 0.5, delay: 0.9 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-        href="/hendralm-resume.pdf" download className='flex items-center gap-2 px-10 py-3 border border-gray-500 rounded-full'>
+        href="/hendralm-resume.pdf" download className='flex items-center gap-2 px-10 py-3 border border-gray-500 rounded-full dark:border-gray-500 dark:text-gray-100'>
             {text.cv} <Image src={assets.download_icon} alt='download-icon' className='w-4'/>
         </motion.a>
       </div>

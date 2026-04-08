@@ -1,7 +1,7 @@
 // work.jsx
 import { assets, workData } from '@/assets/assets'
 import Image from 'next/image'
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 import { motion } from "motion/react"
 
 const Work = ({ language }) => {
@@ -9,16 +9,28 @@ const Work = ({ language }) => {
         id: {
             intro: 'Portofolio Saya',
             title: 'Karya Terbaru',
-            description: 'Berikut beberapa karya terbaru saya yang menunjukkan kemampuan dan kreativitas saya.'
+            description: 'Pilih salah satu project untuk melihat fitur utama dan dampak yang saya kerjakan.',
+            spotlight: 'Project Spotlight',
+            stack: 'Tech Stack',
+            features: 'Fitur Utama',
+            cta: 'Buka Project',
+            noLink: 'Link project belum tersedia'
         },
         en: {
             intro: 'My Portfolio',
             title: 'My Latest Work',
-            description: 'Here are some of my latest works that showcase my skills and creativity.'
+            description: 'Pick any project to see key features and the impact I built.',
+            spotlight: 'Project Spotlight',
+            stack: 'Tech Stack',
+            features: 'Key Features',
+            cta: 'Open Project',
+            noLink: 'Project link is not available yet'
         }
     };
 
     const text = content[language] || content.id;
+    const [activeIndex, setActiveIndex] = useState(0);
+    const activeProject = useMemo(() => workData[activeIndex] || workData[0], [activeIndex]);
 
     const handleProjectClick = (githubLink) => {
         if (githubLink) {
@@ -46,35 +58,76 @@ const Work = ({ language }) => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.7 }}
-                className='max-w-2xl mx-auto mt-5 mb-12 text-center font-ovo'>
+                className='max-w-2xl mx-auto mt-5 mb-12 text-center text-gray-700 font-ovo dark:text-gray-300'>
                 {text.description}
             </motion.p>
 
-            <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1 }}
-                className='grid grid-cols-1 gap-5 my-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-                {workData.map((project, index) => (
-                    <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                        key={index}
-                        style={{ backgroundImage: `url(${project.bgImage})` }}
-                        className='relative bg-center bg-no-repeat bg-cover rounded cursor-pointer aspect-square group'
-                        onClick={() => handleProjectClick(project.githubLink)}>
-                        <div className='absolute flex items-center justify-between w-10/12 px-5 py-3 duration-500 -translate-x-1/2 bg-white rounded-md bottom-5 left-1/2 group-hover:bottom-7'>
-                            <div>
-                                <h2 className='font-semibold'>{project.title}</h2>
-                                <p className='text-sm text-gray-700'>{project.description}</p>
+            <div className='grid items-start grid-cols-1 gap-6 my-10 lg:grid-cols-3'>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 1 }}
+                    className='grid grid-cols-1 gap-5 md:grid-cols-2 lg:col-span-2'>
+                    {workData.map((project, index) => (
+                        <motion.button
+                            whileHover={{ y: -6 }}
+                            transition={{ duration: 0.2 }}
+                            type='button'
+                            key={index}
+                            style={{ backgroundImage: `linear-gradient(to top, rgba(7, 10, 20, 0.68), rgba(7, 10, 20, 0.08)), url(${project.bgImage})` }}
+                            className={`relative p-5 text-left bg-center bg-no-repeat bg-cover rounded-2xl cursor-pointer aspect-[4/3] overflow-hidden border ${activeIndex === index ? 'border-cyan-400 ring-2 ring-cyan-300/40 dark:ring-cyan-400/40' : 'border-white/60 dark:border-slate-700/80'}`}
+                            onClick={() => setActiveIndex(index)}>
+                            <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/65 via-black/20 to-transparent' />
+                            <div className='absolute bottom-0 left-0 right-0 z-10 p-4'>
+                                <h3 className='text-xl font-semibold text-white'>{project.title}</h3>
+                                <p className='text-sm text-gray-100'>{project.description}</p>
                             </div>
-                            <div className='flex items-center justify-center transition border border-black rounded-full shadow-[2px_2px_0_#000] w-9 aspect-square group-hover:bg-lime-300'>
-                                <Image src={assets.send_icon} alt='send-icon' className='w-5' />
-                            </div>
-                        </div>
-                    </motion.div>
-                ))}
-            </motion.div>
+                        </motion.button>
+                    ))}
+                </motion.div>
+
+                <motion.aside
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.45, delay: 0.8 }}
+                    className='sticky top-24 p-6 border shadow-xl lg:col-span-1 rounded-2xl bg-white/85 border-white/70 dark:bg-slate-900/80 dark:border-slate-700'>
+                    <p className='text-xs tracking-[0.2em] uppercase text-cyan-700 dark:text-cyan-300'>{text.spotlight}</p>
+                    <h3 className='mt-2 text-2xl font-semibold text-gray-900 dark:text-white'>{activeProject.title}</h3>
+                    <p className='mt-3 text-sm leading-6 text-gray-700 dark:text-gray-300'>
+                        {language === 'en' ? activeProject.detailEn : activeProject.detailId}
+                    </p>
+
+                    <div className='mt-5'>
+                        <p className='text-sm font-semibold text-gray-800 dark:text-gray-200'>{text.stack}</p>
+                        <p className='text-sm text-gray-600 dark:text-gray-400'>{activeProject.description}</p>
+                    </div>
+
+                    <div className='mt-5'>
+                        <p className='mb-2 text-sm font-semibold text-gray-800 dark:text-gray-200'>{text.features}</p>
+                        <ul className='space-y-2'>
+                            {(language === 'en' ? activeProject.featuresEn : activeProject.featuresId).map((feature, idx) => (
+                                <li key={idx} className='flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300'>
+                                    <span className='mt-2 inline-block h-1.5 w-1.5 rounded-full bg-cyan-500' />
+                                    <span>{feature}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {activeProject.githubLink ? (
+                        <button
+                            type='button'
+                            onClick={() => handleProjectClick(activeProject.githubLink)}
+                            className='inline-flex items-center gap-2 px-5 py-2 mt-6 text-sm text-white transition rounded-full bg-slate-900 dark:bg-cyan-500 dark:text-slate-900 hover:opacity-90'
+                        >
+                            {text.cta}
+                            <Image src={assets.right_arrow_white} alt='open-project' className='w-3' />
+                        </button>
+                    ) : (
+                        <p className='mt-6 text-sm text-gray-500 dark:text-gray-400'>{text.noLink}</p>
+                    )}
+                </motion.aside>
+            </div>
         </motion.div>
 
     )

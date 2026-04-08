@@ -13,7 +13,7 @@ const About = ({ language }) => {
       info: {
         languages: 'HTML, CSS, JavaScript, PHP, React Js, Next.js, Laravel, PostgreSQL, MySQL',
         education: 'Universitas Jenderal Soedirman',
-        projects: 'Membangun lebih dari 5 proyek'
+        projects: 'Membangun lebih dari 7 proyek'
       }
     },
     en: {
@@ -24,7 +24,7 @@ const About = ({ language }) => {
       info: {
         languages: 'HTML, CSS, JavaScript, PHP, React Js, Next.js, Laravel, PostgreSQL, MySQL',
         education: 'Jenderal Soedirman University',
-        projects: 'Built more than 5 projects'
+        projects: 'Built more than 7 projects'
       }
     }
   };
@@ -50,12 +50,12 @@ const About = ({ language }) => {
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-      className='mb-2 text-lg text-center font-ovo'>{text.intro}</motion.h4>
+      className='mb-2 text-lg text-center text-gray-700 font-ovo dark:text-gray-300'>{text.intro}</motion.h4>
       <motion.h2
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.45 }}
-      className='text-5xl text-center font-ovo'>{text.title}</motion.h2>
+      className='text-5xl text-center text-gray-900 font-ovo dark:text-white'>{text.title}</motion.h2>
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -73,7 +73,7 @@ const About = ({ language }) => {
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.75 }}
         className='flex-1'>
-            <p className='max-w-3xl mb-10 text-justify font-ovo'>
+            <p className='max-w-3xl mb-10 text-justify text-gray-700 font-ovo dark:text-gray-300'>
               {text.bio}
             </p>
             <motion.ul
@@ -87,10 +87,10 @@ const About = ({ language }) => {
                     whileInView={{ scale: 1 }}
                      transition={{ duration: 0.2 }}
                      whileHover={{ scale: 1.1 }}
-                    key={index} className='p-6 duration-500 border border-gray-400 cursor-pointer rounded-xl hover:bg-gray-100 hover:-translate-y-1'>
+                    key={index} className='p-6 duration-500 border border-gray-400 cursor-pointer rounded-xl hover:bg-gray-100 dark:border-slate-700 dark:bg-slate-900/50 dark:hover:bg-slate-800 hover:-translate-y-1'>
                         <Image src={icon} alt={title} className='mt-3 w-7'/>
-                        <h3 className='my-4 font-semibold text-gray-700'>{title}</h3>
-                        <p className='text-sm text-gray-600'>{description}</p>
+                      <h3 className='my-4 font-semibold text-gray-700 dark:text-gray-200'>{title}</h3>
+                      <p className='text-sm text-gray-600 dark:text-gray-400'>{description}</p>
                     </motion.li>
                 ))}
             </motion.ul>
@@ -98,7 +98,7 @@ const About = ({ language }) => {
              initial={{ y: 20, opacity: 0 }}
              whileInView={{ y: 0, opacity: 1 }}
              transition={{ duration: 0.5, delay: 1.2 }}
-            className='my-6 text-gray-700 font-ovo'>{text.tools}</motion.h4>
+                className='my-6 text-gray-700 font-ovo dark:text-gray-300'>{text.tools}</motion.h4>
             <motion.ul
              initial={{ y: 20, opacity: 0 }}
              whileInView={{ y: 0, opacity: 1 }}

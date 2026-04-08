@@ -73,45 +73,157 @@ export const workData = [
     {
         title: 'Web RS Yolanda',
         description: 'HTML, CSS, JavaScript, PHP, MySQL',
+        detailId: 'Membangun modul IGD dan laboratorium untuk mendukung alur kerja rumah sakit secara efisien.',
+        detailEn: 'Built ER and laboratory modules to support hospital workflows more efficiently.',
+        featuresId: [
+            'Pengelolaan data pasien untuk unit IGD',
+            'Alur pemeriksaan laboratorium terintegrasi',
+            'Optimasi tampilan dashboard untuk staf medis'
+        ],
+        featuresEn: [
+            'Patient data management for ER workflows',
+            'Integrated laboratory examination flow',
+            'Optimized dashboard UI for medical staff'
+        ],
         bgImage: '/rs-yolanda.png',
         githubLink: 'https://github.com/HendraMaajid/Website-Rumah-Sakit-Yolandaa' // Ganti dengan link GitHub Anda
     },
     {
         title: 'Tukutick',
         description: 'Laravel, Bootstrap, MySQL',
+        detailId: 'Platform ticketing pre-order dengan sistem gacha untuk mengurangi praktik scalping tiket.',
+        detailEn: 'Pre-order ticketing platform with a gacha system to reduce ticket scalping.',
+        featuresId: [
+            'Sistem pre-order satu akun satu kesempatan',
+            'Mekanisme gacha untuk distribusi tiket lebih adil',
+            'Dashboard admin untuk monitoring transaksi'
+        ],
+        featuresEn: [
+            'One-account one-chance pre-order mechanism',
+            'Gacha-based allocation for fair ticket distribution',
+            'Admin dashboard for transaction monitoring'
+        ],
         bgImage: '/TukuTick.png',
         githubLink: 'https://github.com/HendraMaajid/tukutick' // Ganti dengan link GitHub Anda
     },
     {
         title: 'Movie Deck',
         description: 'React Js, Tailwind CSS, TMDB API',
+        detailId: 'Aplikasi katalog film dengan integrasi TMDB API untuk eksplorasi data film interaktif.',
+        detailEn: 'Movie catalog app integrated with TMDB API for interactive movie exploration.',
+        featuresId: [
+            'Pencarian film berdasarkan judul dan kategori',
+            'Menampilkan detail film secara dinamis dari API',
+            'Antarmuka responsif untuk mobile dan desktop'
+        ],
+        featuresEn: [
+            'Movie search by title and category',
+            'Dynamic movie detail rendering from API',
+            'Responsive interface for mobile and desktop'
+        ],
         bgImage: '/movie_deck.png',
         githubLink: 'https://github.com/HendraMaajid/MovieDeck' // Ganti dengan link GitHub Anda
     },
     {
         title: 'LAMA',
         description: 'HTML, CSS, JavaScript, Angular, Firebase',
+        detailId: 'Aplikasi manajemen daftar anime dengan Angular dan Firebase untuk sinkronisasi data real-time.',
+        detailEn: 'Anime list management app built with Angular and Firebase for real-time data sync.',
+        featuresId: [
+            'Tambah, edit, dan hapus daftar anime',
+            'Sinkronisasi data real-time menggunakan Firebase',
+            'Kategorisasi status anime yang ditonton'
+        ],
+        featuresEn: [
+            'Add, edit, and delete anime entries',
+            'Real-time data synchronization with Firebase',
+            'Status categorization for watched anime'
+        ],
         bgImage: '/LAMA.png',
         githubLink: 'https://github.com/HendraMaajid/LAMA' // Ganti dengan link GitHub Anda
     },
     {
         title: 'Learning Management System with AI Chatbot(RAG)',
         description: 'Tailwind CSS, Alpine Js, Laravel, Livewire, PostgreSQL',
+        detailId: 'Mengembangkan LMS dengan chatbot AI berbasis RAG untuk tutor personal dan evaluasi otomatis.',
+        detailEn: 'Developed an LMS with an RAG-based AI chatbot for personal tutoring and auto evaluation.',
+        featuresId: [
+            'Chatbot AI personal tutor berbasis RAG',
+            'Pembuatan konten kuis dan materi dengan AI',
+            'Evaluasi jawaban otomatis dengan feedback'
+        ],
+        featuresEn: [
+            'RAG-based personal tutor AI chatbot',
+            'AI-generated quizzes and learning materials',
+            'Automatic answer evaluation with feedback'
+        ],
         bgImage: '/lms.png',
         githubLink: ''
     },
     {
         title: 'Marii Cup Tournament Padel',
         description: 'Laravel, React Js, Inertia JS, Animate UI, MySQL',
+        detailId: 'Sistem manajemen turnamen padel dengan hitung poin otomatis, bracket generator, dan live scoring.',
+        detailEn: 'Padel tournament management system with auto points, bracket generation, and live scoring.',
+        featuresId: [
+            'Perhitungan poin pemain otomatis',
+            'Generator bracket turnamen sistem gugur',
+            'Manajemen jadwal, skor langsung, dan status match'
+        ],
+        featuresEn: [
+            'Automatic player point calculations',
+            'Knockout tournament bracket generator',
+            'Scheduling, live scoring, and match status management'
+        ],
         bgImage: '/mariicup.png',
         githubLink: 'https://mariicup.com/'
+    },
+    {
+        title: 'AutoPost Blogspot',
+        description: 'Node.js, AI API, Blogspot API, MySQL',
+        detailId: 'Platform otomatis untuk generate dan rewrite artikel berita menggunakan AI, dilengkapi human checker agar kualitas konten tetap terjaga sebelum diposting ke Blogspot.',
+        detailEn: 'An automated platform to generate and rewrite news articles with AI, equipped with a human checker to maintain content quality before publishing to Blogspot.',
+        featuresId: [
+            'Generate artikel otomatis menggunakan AI berdasarkan topik',
+            'Human checker untuk cek persentase konten AI',
+            'Rewrite otomatis ulang jika skor AI terlalu tinggi',
+            'Auto-post ke akun Blogspot yang sudah terhubung'
+        ],
+        featuresEn: [
+            'Automatic AI article generation based on selected topics',
+            'Human checker to analyze AI-content percentage',
+            'Automatic rewrite loop when AI score is too high',
+            'Auto-publish to connected Blogspot accounts'
+        ],
+        bgImage: '/autopost.png',
+        githubLink: 'https://autopost.ozolab.id/login'
+    },
+    {
+        title: 'Ozolab Web Generator',
+        description: 'Laravel, Octane, AI API, Google Maps API, WhatsApp API',
+        detailId: 'Platform otomatis untuk crawling data bisnis dari Google Maps lalu menghasilkan website lengkap dengan SEO, dokumen penawaran, dan pengiriman pesan pemasaran ke WhatsApp target.',
+        detailEn: 'An automation platform that crawls business data from Google Maps and generates complete websites with SEO, proposal documents, and marketing message delivery to target WhatsApp numbers.',
+        featuresId: [
+            'Crawling data perusahaan, cafe, dan bisnis lain dari Google Maps',
+            'Generate website otomatis dengan konten berbasis AI dan optimasi SEO',
+            'Generate dokumen penawaran secara otomatis sesuai profil bisnis',
+            'Kirim pesan WhatsApp otomatis ke target pemasaran'
+        ],
+        featuresEn: [
+            'Crawling company, cafe, and other business data from Google Maps',
+            'Automatic website generation with AI content and SEO optimization',
+            'Automatic proposal document generation based on business profile',
+            'Automated WhatsApp outreach to marketing targets'
+        ],
+        bgImage: '/ozolabwebgenerator.png',
+        githubLink: ''
     }
 ]
 
 export const infoList = [
     { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML, CSS, JavaScript, PHP, React Js, Next.js, Laravel, PostgreSQL, MySQL' },
     { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'Universitas Jenderal Soedirman' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 5 projects' }
+    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 7 projects' }
 ];
 
 export const toolsData = [

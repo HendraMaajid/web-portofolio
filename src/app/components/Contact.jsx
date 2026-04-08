@@ -66,17 +66,17 @@ const Contact = ({ language }) => {
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-         className='mb-2 text-lg text-center font-ovo'>{text.section}</motion.h4>
+         className='mb-2 text-lg text-center text-gray-700 font-ovo dark:text-gray-300'>{text.section}</motion.h4>
         <motion.h2
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className='text-5xl text-center font-ovo'>{text.title}</motion.h2>
+        className='text-5xl text-center text-gray-900 font-ovo dark:text-white'>{text.title}</motion.h2>
         <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.7 }}
-        className='max-w-2xl mx-auto mt-5 mb-12 text-center font-ovo'>
+        className='max-w-2xl mx-auto mt-5 mb-12 text-center text-gray-700 font-ovo dark:text-gray-300'>
           {text.description}
         </motion.p>
 
@@ -90,29 +90,29 @@ const Contact = ({ language }) => {
                 initial={{ x: -50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 1 }}
-                name='name' type="text" placeholder={text.namePlaceholder} className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white' required/>
+                name='name' type="text" placeholder={text.namePlaceholder} className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-slate-900 dark:border-slate-700 dark:text-gray-100' required/>
                 <motion.input
                 initial={{ x: 50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 1.2 }}
-                name='email' type="email" placeholder={text.emailPlaceholder} className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white' required/>
+                name='email' type="email" placeholder={text.emailPlaceholder} className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-slate-900 dark:border-slate-700 dark:text-gray-100' required/>
             </div>
             <motion.textarea
             initial={{ y: -50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 1.3 }}
-              name='message' placeholder={text.messagePlaceholder} rows='6' id="" className='w-full p-4 border-[0.5px] outline-none border-gray-400 rounded-md bg-white mb-6' required></motion.textarea>
+              name='message' placeholder={text.messagePlaceholder} rows='6' id="" className='w-full p-4 border-[0.5px] outline-none border-gray-400 rounded-md bg-white mb-6 dark:bg-slate-900 dark:border-slate-700 dark:text-gray-100' required></motion.textarea>
             <motion.button
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 1.4 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            type='submit' className='flex items-center justify-between gap-2 px-8 py-3 mx-auto text-white duration-500 rounded-full bg-black/80 w-max hover:bg-black'>
+            type='submit' className='flex items-center justify-between gap-2 px-8 py-3 mx-auto text-white duration-500 rounded-full bg-black/80 w-max hover:bg-black dark:bg-cyan-500 dark:text-slate-900 dark:hover:bg-cyan-400'>
                 {text.submit} <Image src={assets.right_arrow_white} alt='arr-w-r' className='w-4'/>
             </motion.button>
 
-            <p className='mt-4'>{result}</p>
+            <p className='mt-4 text-center text-gray-700 dark:text-gray-300'>{result}</p>
         </motion.form>
     </motion.div>
   )
