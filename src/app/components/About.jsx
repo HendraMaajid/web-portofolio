@@ -3,19 +3,59 @@ import { motion } from "motion/react"
 import Image from 'next/image'
 import React from 'react'
 
-const About = () => {
+const About = ({ language }) => {
+  const content = {
+    id: {
+      intro: 'Perkenalan',
+      title: 'Tentang Saya',
+      bio: 'Saya adalah fresh graduate Informatika Universitas Jenderal Soedirman dan saat ini aktif sebagai freelancer Full Stack Developer. Saya berpengalaman membangun aplikasi web berbasis Laravel, React, dan AI integration melalui berbagai proyek nyata, termasuk sistem informasi rumah sakit, learning management system berbasis RAG, serta platform manajemen turnamen. Saya menikmati proses problem-solving, kolaborasi tim, dan pengembangan solusi digital yang berdampak.',
+      tools: 'Tools',
+      info: {
+        languages: 'HTML, CSS, JavaScript, PHP, React Js, Next.js, Laravel, PostgreSQL, MySQL',
+        education: 'Universitas Jenderal Soedirman',
+        projects: 'Membangun lebih dari 5 proyek'
+      }
+    },
+    en: {
+      intro: 'Introduction',
+      title: 'About Me',
+      bio: 'I am an Informatics fresh graduate from Jenderal Soedirman University and currently working as a freelance Full Stack Developer. I have hands-on experience building web applications with Laravel, React, and AI integration through real projects, including a hospital information system, an RAG-based learning management system, and a tournament management platform. I enjoy problem-solving, team collaboration, and delivering impactful digital solutions.',
+      tools: 'Tools',
+      info: {
+        languages: 'HTML, CSS, JavaScript, PHP, React Js, Next.js, Laravel, PostgreSQL, MySQL',
+        education: 'Jenderal Soedirman University',
+        projects: 'Built more than 5 projects'
+      }
+    }
+  };
+
+  const text = content[language] || content.id;
+
+  const localizedInfo = infoList.map((item) => {
+    if (item.title === 'Languages') {
+      return { ...item, title: language === 'id' ? 'Bahasa' : 'Languages', description: text.info.languages };
+    }
+    if (item.title === 'Education') {
+      return { ...item, title: language === 'id' ? 'Pendidikan' : 'Education', description: text.info.education };
+    }
+    if (item.title === 'Projects') {
+      return { ...item, title: language === 'id' ? 'Proyek' : 'Projects', description: text.info.projects };
+    }
+    return item;
+  });
+
   return (
     <motion.div className='w-full px-[12%] py-10 scroll-mt-20' id='about' initial={{ opacity: 0 }} whileInView={{ opacity:1 }} transition={{ duration: 0.7 }}>
       <motion.h4
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-      className='mb-2 text-lg text-center font-ovo'>Introduction</motion.h4>
+      className='mb-2 text-lg text-center font-ovo'>{text.intro}</motion.h4>
       <motion.h2
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.45 }}
-      className='text-5xl text-center font-ovo'>About Me</motion.h2>
+      className='text-5xl text-center font-ovo'>{text.title}</motion.h2>
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -34,14 +74,14 @@ const About = () => {
         transition={{ duration: 0.5, delay: 0.75 }}
         className='flex-1'>
             <p className='max-w-3xl mb-10 text-justify font-ovo'>
-                Saya adalah mahasiswa Informatika di Universitas Jenderal Soedirman yang berminat terhadap dunia teknologi dan pemrograman. Selama perkuliahan, saya telah mengembangkan keahlian dalam berbagai bahasa pemrograman dan selalu antusias untuk mengeksplorasi tren teknologi terbaru. Melalui berbagai projek akademik dan personal, saya terus mengasah kemampuan problem-solving dan berpikir analitis
+              {text.bio}
             </p>
             <motion.ul
              initial={{ y: 20, opacity: 0 }}
              whileInView={{ y: 0, opacity: 1 }}
              transition={{ duration: 0.5, delay: 0.9 }}
             className='grid max-w-3xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'> 
-                {infoList.map(({icon, iconDark, title, description}, index) => (
+              {localizedInfo.map(({icon, iconDark, title, description}, index) => (
                     <motion.li
                      initial={{ scale: 0.5 }}
                     whileInView={{ scale: 1 }}
@@ -58,7 +98,7 @@ const About = () => {
              initial={{ y: 20, opacity: 0 }}
              whileInView={{ y: 0, opacity: 1 }}
              transition={{ duration: 0.5, delay: 1.2 }}
-            className='my-6 text-gray-700 font-ovo'>Tools</motion.h4>
+            className='my-6 text-gray-700 font-ovo'>{text.tools}</motion.h4>
             <motion.ul
              initial={{ y: 20, opacity: 0 }}
              whileInView={{ y: 0, opacity: 1 }}

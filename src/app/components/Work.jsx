@@ -4,7 +4,22 @@ import Image from 'next/image'
 import React from 'react'
 import { motion } from "motion/react"
 
-const Work = () => {
+const Work = ({ language }) => {
+    const content = {
+        id: {
+            intro: 'Portofolio Saya',
+            title: 'Karya Terbaru',
+            description: 'Berikut beberapa karya terbaru saya yang menunjukkan kemampuan dan kreativitas saya.'
+        },
+        en: {
+            intro: 'My Portfolio',
+            title: 'My Latest Work',
+            description: 'Here are some of my latest works that showcase my skills and creativity.'
+        }
+    };
+
+    const text = content[language] || content.id;
+
     const handleProjectClick = (githubLink) => {
         if (githubLink) {
             window.open(githubLink, '_blank');
@@ -21,18 +36,18 @@ const Work = () => {
                 initial={{ y: -20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className='mb-2 text-lg text-center font-ovo'>My Portofolio</motion.h4>
+                className='mb-2 text-lg text-center font-ovo'>{text.intro}</motion.h4>
             <motion.h2
                 initial={{ y: -20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className='text-5xl text-center font-ovo'>My Latest Work</motion.h2>
+                className='text-5xl text-center font-ovo'>{text.title}</motion.h2>
             <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.7 }}
                 className='max-w-2xl mx-auto mt-5 mb-12 text-center font-ovo'>
-                Here are some of my latest works that showcase my skills and creativity.
+                {text.description}
             </motion.p>
 
             <motion.div

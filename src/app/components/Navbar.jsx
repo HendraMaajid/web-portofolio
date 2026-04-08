@@ -2,9 +2,27 @@ import { assets } from '@/assets/assets'
 import Image from 'next/image'
 import React, { useRef, useEffect, useState } from 'react'
 
-const Navbar = () => {
+const Navbar = ({ language, onLanguageChange }) => {
   const sideMenuRef = useRef();
   const [isScroll, setIsScroll] = useState(false)
+
+  const navText = {
+    id: {
+      home: 'Beranda',
+      about: 'Tentang',
+      work: 'Karya',
+      contact: 'Kontak'
+    },
+    en: {
+      home: 'Home',
+      about: 'About',
+      work: 'My Works',
+      contact: 'Contact Me'
+    }
+  };
+
+  const text = navText[language] || navText.id;
+
   const handleMenuToggle = () => {
     sideMenuRef.current.style.transform = 'translateX(-14rem)';
   }
@@ -12,13 +30,14 @@ const Navbar = () => {
     sideMenuRef.current.style.transform = 'translateX(14rem)';
   }
 
-  useEffect(() =>
-    window.addEventListener('scroll', ()=>{
-      if(scrollY > 50){
-        setIsScroll(true)
-      }
-    },[])
-  )
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScroll(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   return (
     <>
@@ -27,16 +46,29 @@ const Navbar = () => {
             <h1 className='text-3xl font-bold'>My Portofolio </h1>
         </a>
         <ul className={`items-center hidden gap-6 px-12 py-3 rounded-full md:flex lg:gap-8 ${isScroll ? "" : "bg-white bg-opacity-50 shadow-md"}`}>
-            <li><a href="#top" className='font-ovo'>Home</a></li>
-            <li><a href="#about" className='font-ovo'>About</a></li>
-            <li><a href="#work" className='font-ovo'>My Works</a></li>
-            <li><a href="#contact" className='font-ovo'>Contact Me</a></li>
+            <li><a href="#top" className='font-ovo'>{text.home}</a></li>
+            <li><a href="#about" className='font-ovo'>{text.about}</a></li>
+            <li><a href="#work" className='font-ovo'>{text.work}</a></li>
+            <li><a href="#contact" className='font-ovo'>{text.contact}</a></li>
         </ul>
         <div className='flex items-center gap-4 lg:gap-6'>
-            <button>
-                {/* <Image src={assets.moon_icon} alt='moon-icon' className='w-6'/> */}
-            </button>
-            <a href="#contact" className='items-center hidden gap-3 px-10 py-3 border border-gray-600 rounded-full lg:flex '>Contact <Image src={assets.arrow_icon} alt='arr-icon' className='w-3'/></a>
+            <div className='items-center hidden p-1 border border-gray-400 rounded-full sm:flex'>
+                <button
+                  type='button'
+                  onClick={() => onLanguageChange('id')}
+                  className={`px-3 py-1 text-sm rounded-full ${language === 'id' ? 'bg-black text-white' : 'text-gray-700'}`}
+                >
+                  ID
+                </button>
+                <button
+                  type='button'
+                  onClick={() => onLanguageChange('en')}
+                  className={`px-3 py-1 text-sm rounded-full ${language === 'en' ? 'bg-black text-white' : 'text-gray-700'}`}
+                >
+                  EN
+                </button>
+            </div>
+            <a href="#contact" className='items-center hidden gap-3 px-10 py-3 border border-gray-600 rounded-full lg:flex '>{text.contact} <Image src={assets.arrow_icon} alt='arr-icon' className='w-3'/></a>
             <button onClick={handleMenuToggle} className='md:hidden'>
                 <Image src={assets.menu_black} alt='menu-icon' className='block w-6 ml-3 md:hidden'/>
             </button>
@@ -47,10 +79,26 @@ const Navbar = () => {
             <div className='absolute top-6 right-15' onClick={handleCloseMenu}>
               <Image src={assets.close_black} alt='close-icon' className='w-5 cursor-pointer'/> 
             </div>
-            <li><a href="#top" className='font-ovo' onClick={handleCloseMenu}>Home</a></li>
-            <li><a href="#about" className='font-ovo' onClick={handleCloseMenu}>About</a></li>
-            <li><a href="#work" className='font-ovo' onClick={handleCloseMenu}>My Works</a></li>
-            <li><a href="#contact" className='font-ovo' onClick={handleCloseMenu}>Contact Me</a></li>
+            <li className='flex items-center gap-2 mb-2'>
+                <button
+                  type='button'
+                  onClick={() => onLanguageChange('id')}
+                  className={`px-3 py-1 text-sm rounded-full border ${language === 'id' ? 'bg-black text-white border-black' : 'border-gray-400 text-gray-700'}`}
+                >
+                  ID
+                </button>
+                <button
+                  type='button'
+                  onClick={() => onLanguageChange('en')}
+                  className={`px-3 py-1 text-sm rounded-full border ${language === 'en' ? 'bg-black text-white border-black' : 'border-gray-400 text-gray-700'}`}
+                >
+                  EN
+                </button>
+            </li>
+            <li><a href="#top" className='font-ovo' onClick={handleCloseMenu}>{text.home}</a></li>
+            <li><a href="#about" className='font-ovo' onClick={handleCloseMenu}>{text.about}</a></li>
+            <li><a href="#work" className='font-ovo' onClick={handleCloseMenu}>{text.work}</a></li>
+            <li><a href="#contact" className='font-ovo' onClick={handleCloseMenu}>{text.contact}</a></li>
         </ul>
       </nav>
     </>
