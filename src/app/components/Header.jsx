@@ -7,14 +7,14 @@ const Header = ({ language }) => {
   const content = {
     id: {
       greeting: 'Hi! Saya Hendra Latieful Maajid',
-      role: 'Web Developer & Freelance Full Stack Developer',
+      role: 'Web Developer & Full Stack Developer',
       bio: 'Saya adalah fresh graduate Informatika Universitas Jenderal Soedirman yang saat ini aktif sebagai freelancer di Ozolab, berfokus pada pengembangan web application yang scalable dan solutif.',
       contact: 'Hubungi Saya',
       cv: 'CV Saya'
     },
     en: {
       greeting: 'Hi! I am Hendra Latieful Maajid',
-      role: 'Web Developer & Freelance Full Stack Developer',
+      role: 'Web Developer & Full Stack Developer',
       bio: 'I am an Informatics fresh graduate from Jenderal Soedirman University who is currently working as a freelancer in Ozolab, focusing on building scalable and practical web applications.',
       contact: 'Contact Me',
       cv: 'My CV'
