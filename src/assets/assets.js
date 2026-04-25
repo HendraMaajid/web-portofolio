@@ -79,6 +79,24 @@ export const assets = {
 // assets.js
 export const workData = [
     {
+        title: 'EduPlatform',
+        description: 'Go (Gin), Next.js, PostgreSQL, Tailwind CSS',
+        detailId: 'Platform Learning Management System (LMS) full-stack dengan fitur manajemen kursus, modul pembelajaran, quiz interaktif, dan generate sertifikat otomatis.',
+        detailEn: 'Full-stack Learning Management System (LMS) platform with features for course management, learning modules, interactive quizzes, and automatic certificate generation.',
+        featuresId: [
+            'Manajemen kursus, modul, quiz, dan assignment',
+            'Role-based access control (Admin, Teacher, Student)',
+            'Generate sertifikat otomatis (PDF) setelah penyelesaian kursus'
+        ],
+        featuresEn: [
+            'Course, module, quiz, and assignment management',
+            'Role-based access control (Admin, Teacher, Student)',
+            'Automatic certificate generation (PDF) upon course completion'
+        ],
+        bgImage: 'https://raw.githubusercontent.com/HendraMaajid/eduplatform/main/image/home.png',
+        githubLink: 'https://github.com/HendraMaajid/eduplatform'
+    },
+    {
         title: 'Web RS Yolanda',
         description: 'HTML, CSS, JavaScript, PHP, MySQL',
         detailId: 'Membangun modul IGD dan laboratorium untuk mendukung alur kerja rumah sakit secara efisien.',
