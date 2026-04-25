@@ -91,10 +91,11 @@ export const workData = [
         featuresEn: [
             'Course, module, quiz, and assignment management',
             'Role-based access control (Admin, Teacher, Student)',
-            'Automatic certificate generation (PDF) upon course completion'
+            'Automatic certificate generation (PDF) upon course completion',
+            'Link GitHub : https://github.com/HendraMaajid/eduplatform'
         ],
         bgImage: 'https://raw.githubusercontent.com/HendraMaajid/eduplatform/main/image/home.png',
-        githubLink: 'https://github.com/HendraMaajid/eduplatform'
+        githubLink: 'https://educourse.hendramaajid.my.id'
     },
     {
         title: 'Web RS Yolanda',
@@ -242,7 +243,7 @@ export const workData = [
             'Automated WhatsApp outreach to marketing targets'
         ],
         bgImage: '/ozolabwebgenerator.png',
-        githubLink: ''
+        githubLink: 'https://ozolab.id'
     }
 ]
 
