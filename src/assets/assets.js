@@ -185,7 +185,7 @@ export const workData = [
             'Automatic answer evaluation with feedback'
         ],
         bgImage: '/lms.png',
-        githubLink: ''
+        githubLink: 'http://belajar.smp-perantara.sch.id/'
     },
     {
         title: 'Marii Cup Tournament Padel',
