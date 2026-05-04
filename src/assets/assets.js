@@ -86,12 +86,12 @@ export const workData = [
         featuresId: [
             'Manajemen kursus, modul, quiz, dan assignment',
             'Role-based access control (Admin, Teacher, Student)',
-            'Generate sertifikat otomatis (PDF) setelah penyelesaian kursus'
+            'Generate sertifikat otomatis setelah penyelesaian kursus'
         ],
         featuresEn: [
             'Course, module, quiz, and assignment management',
             'Role-based access control (Admin, Teacher, Student)',
-            'Automatic certificate generation (PDF) upon course completion',
+            'Automatic certificate generation upon course completion',
             'Link GitHub : https://github.com/HendraMaajid/eduplatform'
         ],
         bgImage: 'https://raw.githubusercontent.com/HendraMaajid/eduplatform/main/image/home.png',
