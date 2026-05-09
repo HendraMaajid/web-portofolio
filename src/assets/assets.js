@@ -86,11 +86,16 @@ export const workData = [
         featuresId: [
             'Manajemen kursus, modul, quiz, dan assignment',
             'Role-based access control (Admin, Teacher, Student)',
-            'Generate sertifikat otomatis setelah penyelesaian kursus'
+            'Siap untuk menangani ribuan user',
+            'AI assistant untuk membantu belajar siswa berbasis RAG',
+            'Generate sertifikat otomatis setelah penyelesaian kursus',
+            'Link GitHub : https://github.com/HendraMaajid/eduplatform'
         ],
         featuresEn: [
             'Course, module, quiz, and assignment management',
             'Role-based access control (Admin, Teacher, Student)',
+            'Ready to handle thousands of users',
+            'AI assistant to help students learn based on RAG',
             'Automatic certificate generation upon course completion',
             'Link GitHub : https://github.com/HendraMaajid/eduplatform'
         ],
