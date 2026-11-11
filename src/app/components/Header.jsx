@@ -1,74 +1,104 @@
-import { assets } from '@/assets/assets'
-import Image from 'next/image'
-import React from 'react'
-import { motion } from "motion/react"
+import Image from "next/image";
+import portrait from "@/assets/saya.jpg";
+import { copy, profile } from "@/data/portfolio";
+import Icon from "./Icon";
 
-const Header = ({ language }) => {
-  const content = {
-    id: {
-      greeting: 'Hi! Saya Hendra Latieful Maajid',
-      role: 'Web Developer & Full Stack Developer',
-      bio: 'Saya adalah fresh graduate Informatika Universitas Jenderal Soedirman yang saat ini aktif sebagai freelancer di Ozolab, berfokus pada pengembangan web application yang scalable dan solutif.',
-      contact: 'Hubungi Saya',
-      cv: 'CV Saya'
-    },
-    en: {
-      greeting: 'Hi! I am Hendra Latieful Maajid',
-      role: 'Web Developer & Full Stack Developer',
-      bio: 'I am an Informatics fresh graduate from Jenderal Soedirman University who is currently working as a freelancer in Ozolab, focusing on building scalable and practical web applications.',
-      contact: 'Contact Me',
-      cv: 'My CV'
-    }
-  };
-
-  const text = content[language] || content.id;
-
+export default function Header({ language }) {
+  const text = copy[language];
   return (
-    <div className='flex flex-col items-center justify-center w-11/12 h-screen max-w-3xl gap-6 pt-20 mx-auto text-center'>
-      <motion.div 
-        initial={{ scale:0 }}
-        whileInView={{ scale:1 }}
-        transition={{ duration: 0.5, type:"spring", stiffness:100 }}
-      >
-        <Image src={assets.saya} alt='foto-profil' className='object-cover w-32 h-32 rounded-full'/>
-      </motion.div>
-      <motion.h3
-        initial={{ y:-20, opacity:0 }}
-        whileInView={{ y:0, opacity:1 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-       className='flex mb-3 text-xl text-gray-800 md:text-2xl font-ovo dark:text-gray-200'>{text.greeting}</motion.h3>
-      <motion.h1
-        initial={{ y:-20, opacity:0 }}
-        whileInView={{ y:0, opacity:1 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-      className='text-2xl sm:text-4xl lg:text-5xl font-ovo text-gray-900 dark:text-white'>{text.role}</motion.h1>
-      <motion.p
-        initial={{ y:-20, opacity:0 }}
-        whileInView={{ y:0, opacity:1 }}
-        transition={{ duration: 0.5, delay: 0.7 }}
-      className='max-w-2xl mx-auto text-gray-700 font-ovo dark:text-gray-300'>
-        {text.bio}
-      </motion.p>
-      <div className='flex flex-col items-center gap-4 mt-8 sm:flex-row'>
-        <motion.a
-          initial={{ y:20, opacity:0 }}
-          whileInView={{ y:0, opacity:1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        href="#contact" className='flex items-center gap-2 px-10 py-3 text-white bg-black border border-white rounded-full dark:border-slate-800 dark:bg-cyan-500 dark:text-slate-900'>{text.contact} <Image src={assets.right_arrow_white} alt='arr-w-icon' className='w-4'/></motion.a>
-        <motion.a
-          initial={{ y:20, opacity:0 }}
-          whileInView={{ y:0, opacity:1 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        href="/hendralm-resume.pdf" download className='flex items-center gap-2 px-10 py-3 border border-gray-500 rounded-full dark:border-gray-500 dark:text-gray-100'>
-            {text.cv} <Image src={assets.download_icon} alt='download-icon' className='w-4'/>
-        </motion.a>
+    <section id="top" className="hero">
+      <div className="container hero-grid">
+        <div className="hero-copy">
+          <p className="eyebrow">
+            <span className="status-dot" />
+            {text.eyebrow}
+          </p>
+          <p className="hero-greeting">{text.hello}</p>
+          <h1>
+            {text.headline[0]}
+            <br />
+            <span className="serif-accent">{text.headline[1]}</span>
+          </h1>
+          <p className="hero-intro">{text.intro}</p>
+          <div className="hero-actions">
+            <a href="#work" className="button button-primary">
+              {text.workCta}
+              <Icon name="diagonal" />
+            </a>
+            <a
+              href={profile.resume}
+              download
+              className="button button-secondary"
+            >
+              {text.cv}
+              <Icon name="download" />
+            </a>
+          </div>
+          <div className="hero-socials">
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
+              <Icon name="github" />
+            </a>
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <Icon name="linkedin" />
+            </a>
+            <span className="small-divider" />
+            <span>
+              <Icon name="location" size={15} />
+              {profile.location}
+            </span>
+          </div>
+        </div>
+        <div className="portrait-composition">
+          <div className="portrait-orbit" aria-hidden="true" />
+          <div className="portrait-frame">
+            <Image
+              src={portrait}
+              alt={text.portrait}
+              priority
+              sizes="(max-width: 700px) 80vw, (max-width: 1000px) 40vw, 420px"
+              className="portrait-image"
+            />
+            <div className="portrait-caption">
+              <span>HENDRA LATIEFUL MAAJID</span>
+              <span>DEVELOPER / INDONESIA</span>
+            </div>
+          </div>
+          <span className="portrait-code" aria-hidden="true">
+            <Icon name="code" size={26} />
+          </span>
+          <div className="focus-note">
+            <Icon name="spark" size={26} />
+            <div>
+              <span>{text.focus}</span>
+              <p>{text.focusValue}</p>
+            </div>
+          </div>
+          <span className="portrait-index" aria-hidden="true">
+            PORTFOLIO — 2026
+          </span>
+        </div>
       </div>
-    </div>
-  )
+      <div className="container hero-bottom">
+        <a href="#about">
+          <span className="scroll-indicator">
+            <Icon name="down" size={16} />
+          </span>
+          {text.scroll}
+        </a>
+        <span>
+          Laravel <i /> Next.js <i /> AI Integration
+        </span>
+      </div>
+    </section>
+  );
 }
-
-export default Header

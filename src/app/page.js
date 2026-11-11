@@ -1,43 +1,103 @@
-'use client';
-import { useEffect, useState } from "react";
+"use client";
+
+import { useCallback, useSyncExternalStore } from "react";
+import { copy } from "@/data/portfolio";
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import About from "./components/About";
+import Experience from "./components/Experience";
 import Work from "./components/Work";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
+function getPreference(key, fallback) {
+  if (sessionPreferences[key]) return sessionPreferences[key];
+  try {
+    const saved = localStorage.getItem(key);
+    if (key === "theme" && (saved === "dark" || saved === "light"))
+      return saved;
+    if (key === "language" && (saved === "id" || saved === "en")) return saved;
+  } catch {
+    /* Preferences still work when browser storage is unavailable. */
+  }
+  return key === "theme" &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : fallback;
+}
+
+function applyPreferences() {
+  const theme = getPreference("theme", "light");
+  document.documentElement.classList.toggle("dark", theme === "dark");
+  document.documentElement.style.colorScheme = theme;
+  document.documentElement.lang = getPreference("language", "id");
+}
+
+function subscribe(callback) {
+  const update = () => {
+    applyPreferences();
+    callback();
+  };
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  window.addEventListener("storage", update);
+  window.addEventListener("portfolio-preference", update);
+  media.addEventListener("change", update);
+  return () => {
+    window.removeEventListener("storage", update);
+    window.removeEventListener("portfolio-preference", update);
+    media.removeEventListener("change", update);
+  };
+}
+
+function usePreference(key, fallback) {
+  const snapshot = useCallback(
+    () => getPreference(key, fallback),
+    [key, fallback],
+  );
+  const serverSnapshot = useCallback(() => fallback, [fallback]);
+  const value = useSyncExternalStore(subscribe, snapshot, serverSnapshot);
+  const setValue = (next) => {
+    try {
+      localStorage.setItem(key, next);
+      delete sessionPreferences[key];
+    } catch {
+      sessionPreferences[key] = next;
+    }
+    if (key === "theme") {
+      document.documentElement.classList.toggle("dark", next === "dark");
+      document.documentElement.style.colorScheme = next;
+    } else document.documentElement.lang = next;
+    window.dispatchEvent(new Event("portfolio-preference"));
+  };
+  return [value, setValue];
+}
+
+const sessionPreferences = {};
 
 export default function Home() {
-  const [language, setLanguage] = useState('id');
-  const [theme, setTheme] = useState('light');
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark' || savedTheme === 'light') {
-      setTheme(savedTheme);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+  const [language, setLanguage] = usePreference("language", "id");
+  const [theme, setTheme] = usePreference("theme", "light");
+  const text = copy[language];
 
   return (
-    <div className={`${theme === 'dark' ? 'dark' : ''}`}>
-      <div className='min-h-screen text-gray-900 transition-colors duration-500 bg-[radial-gradient(circle_at_top,_#ffffff_0%,_#f5f8ff_45%,_#edf3ff_100%)] dark:bg-[radial-gradient(circle_at_top,_#111827_0%,_#0a1020_45%,_#050814_100%)] dark:text-gray-100'>
-        <Navbar
-          language={language}
-          onLanguageChange={setLanguage}
-          theme={theme}
-          onThemeChange={setTheme}
-        />
+    <>
+      <a href="#main" className="skip-link">
+        {text.skip}
+      </a>
+      <Navbar
+        language={language}
+        onLanguageChange={setLanguage}
+        theme={theme}
+        onThemeChange={setTheme}
+      />
+      <main id="main">
         <Header language={language} />
         <About language={language} />
+        <Experience language={language} />
         <Work language={language} />
         <Contact language={language} />
-        <Footer language={language} />
-      </div>
-    </div>
+      </main>
+      <Footer language={language} />
+    </>
   );
 }

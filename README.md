@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Hendra Latieful Maajid — Portfolio
 
-## Getting Started
+Personal portfolio built with Next.js 16, React 19, and Tailwind CSS 4. Includes Indonesian and English content, persistent light/dark preferences, a responsive project gallery, a contact form, and Vercel Web Analytics.
 
-First, run the development server:
+## Local development
+
+Use Node.js 20.9 or later.
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. For a production build:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The ESLint CLI is available with `npm run lint`; Next.js 16 no longer provides `next lint`.
 
-## Learn More
+## Updating content
 
-To learn more about Next.js, take a look at the following resources:
+- `src/data/portfolio.js`: profile, bilingual copy, education, experience, skills, and projects. Career information follows `public/hendralm-resume.pdf`; older personal projects are retained from the original portfolio.
+- `public/hendralm-resume.pdf`: downloadable CV.
+- `src/app/globals.css`: responsive design and light/dark color tokens.
+- `src/app/components/Icon.jsx`: SVG icons inherit text color through `currentColor`.
+- `src/app/fonts/`: locally hosted Outfit and Ovo fonts, including their SIL Open Font Licenses. Builds do not fetch Google Fonts.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The contact form retains the existing Web3Forms integration and handles failed requests and timeouts. Delivery still depends on the existing Web3Forms account and its configuration.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Vercel Analytics
 
-## Deploy on Vercel
+`@vercel/analytics/next` is mounted once in `src/app/layout.js`. Enable **Web Analytics** for the project in the Vercel dashboard, then deploy this source to Vercel. Visit the deployed site to begin collecting page views. Local development does not send production analytics.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See the [Vercel Web Analytics quickstart](https://vercel.com/docs/analytics/quickstart?framework=nextjs).

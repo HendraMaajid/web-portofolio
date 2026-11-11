@@ -1,139 +1,163 @@
-// work.jsx
-import { assets, workData } from '@/assets/assets'
-import Image from 'next/image'
-import React from 'react'
-import { motion } from "motion/react"
+import { useState } from "react";
+import Image from "next/image";
+import { copy, projects } from "@/data/portfolio";
+import Icon from "./Icon";
 
-const Work = ({ language }) => {
-    const content = {
-        id: {
-            intro: 'Portofolio Saya',
-            title: 'Karya Terbaru',
-            description: 'Pilih salah satu project untuk melihat fitur utama dan dampak yang saya kerjakan.',
-            stack: 'Tech Stack',
-            features: 'Fitur Utama',
-            cta: 'Buka Project',
-            noLink: 'Link project belum tersedia'
-        },
-        en: {
-            intro: 'My Portfolio',
-            title: 'My Latest Work',
-            description: 'Pick any project to see key features and the impact I built.',
-            stack: 'Tech Stack',
-            features: 'Key Features',
-            cta: 'Open Project',
-            noLink: 'Project link is not available yet'
-        }
-    };
+const INITIAL_PROJECT_COUNT = 7;
 
-    const text = content[language] || content.id;
-
-    const handleProjectClick = (githubLink) => {
-        if (githubLink) {
-            window.open(githubLink, '_blank');
-        }
-    };
-
-    const renderProjectCard = (project, index, isFeatured) => (
-        <motion.div
-            layout
-            key={index}
-            className={`flex flex-col overflow-hidden bg-white/90 dark:bg-slate-900/85 border border-gray-200 dark:border-slate-700/80 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 ${isFeatured ? 'w-full max-w-3xl mx-auto ring-1 ring-cyan-300/30 dark:ring-cyan-400/30 shadow-lg' : ''}`}
-        >
-            {/* Header Image & Title */}
-            <div className="relative group">
-                <div 
-                    className={`w-full bg-contain bg-no-repeat bg-center ${isFeatured ? 'aspect-[16/9] sm:aspect-[2/1]' : 'aspect-[16/9]'}`} 
-                    style={{ backgroundImage: `url(${project.bgImage})` }} 
-                />
-                <div className='absolute inset-0 transition-opacity duration-300 opacity-100 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:opacity-90' />
-                <div className='absolute bottom-0 left-0 right-0 flex items-end justify-between p-5'>
-                    <div>
-                        <h3 className={`font-semibold text-white ${isFeatured ? 'text-2xl sm:text-3xl' : 'text-xl'}`}>{project.title}</h3>
-                        <p className={`mt-1 text-gray-200 ${isFeatured ? 'text-base sm:text-lg' : 'text-sm'}`}>{project.description}</p>
-                    </div>
-                </div>
-            </div>
-
-            {/* Details (Always visible) */}
-            <div className="overflow-hidden border-t border-gray-100 dark:border-slate-800">
-                <div className="p-5 sm:p-6">
-                    <p className={`leading-6 text-gray-700 dark:text-gray-300 ${isFeatured ? 'text-base' : 'text-sm'}`}>
-                        {language === 'en' ? project.detailEn : project.detailId}
-                    </p>
-
-                    <div className='mt-5'>
-                        <p className={`mb-2 font-semibold text-gray-800 dark:text-gray-200 ${isFeatured ? 'text-base' : 'text-sm'}`}>{text.features}</p>
-                        <ul className='space-y-2'>
-                            {(language === 'en' ? project.featuresEn : project.featuresId).map((feature, idx) => (
-                                <li key={idx} className={`flex items-start gap-2 text-gray-700 dark:text-gray-300 ${isFeatured ? 'text-base' : 'text-sm'}`}>
-                                    <span className='mt-2 inline-block h-1.5 w-1.5 rounded-full bg-cyan-500 shrink-0' />
-                                    <span>{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {project.githubLink ? (
-                        <button
-                            type='button'
-                            onClick={() => handleProjectClick(project.githubLink)}
-                            className={`inline-flex items-center gap-2 px-5 py-2 mt-6 text-white transition rounded-full bg-slate-900 dark:bg-cyan-500 dark:text-slate-900 hover:opacity-90 ${isFeatured ? 'text-base' : 'text-sm'}`}
-                        >
-                            {text.cta}
-                            <Image src={assets.right_arrow_white} alt='open-project' className='w-3' />
-                        </button>
-                    ) : (
-                        <p className={`mt-6 text-gray-500 dark:text-gray-400 ${isFeatured ? 'text-base' : 'text-sm'}`}>{text.noLink}</p>
-                    )}
-                </div>
-            </div>
-        </motion.div>
-    );
-
+function ProjectVisual({ project, language }) {
+  if (project.image)
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.7 }}
-            className='w-full px-5 py-10 scroll-mt-20 sm:px-8 lg:px-[12%]' id='work'>
-            <motion.h4
-                initial={{ y: -20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className='mb-2 text-lg text-center font-ovo'>{text.intro}</motion.h4>
-            <motion.h2
-                initial={{ y: -20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className='text-5xl text-center font-ovo'>{text.title}</motion.h2>
-            <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                className='max-w-2xl mx-auto mt-5 mb-12 text-center text-gray-700 font-ovo dark:text-gray-300'>
-                {text.description}
-            </motion.p>
-
-            <div className="flex flex-col gap-10">
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.9 }}
-                >
-                    {workData.length > 0 && renderProjectCard(workData[0], 0, true)}
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 1 }}
-                    className='grid items-start grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
-                    {workData.slice(1).map((project, idx) => renderProjectCard(project, idx + 1, false))}
-                </motion.div>
-            </div>
-        </motion.div>
-    )
+      <div className="project-image">
+        <Image
+          src={project.image}
+          alt={`${project.title} — ${language === "id" ? "tampilan aplikasi" : "application screenshot"}`}
+          fill
+          sizes={
+            project.featured
+              ? "(max-width: 700px) 90vw, 650px"
+              : "(max-width: 700px) 90vw, 580px"
+          }
+        />
+      </div>
+    );
+  return (
+    <div
+      className={`project-visual visual-${project.visual}`}
+      aria-hidden="true"
+    >
+      <span className="visual-kicker">{project.type[language]}</span>
+      <div className="visual-wordmark">
+        <Icon
+          name={
+            project.visual === "winme"
+              ? "layers"
+              : project.visual === "carwash"
+                ? "spark"
+                : "education"
+          }
+          size={42}
+        />
+        <span>
+          {project.visual === "winme"
+            ? "winme"
+            : project.visual === "carwash"
+              ? "carwash."
+              : "eduplatform"}
+        </span>
+      </div>
+      <span className="visual-bottom">
+        {project.visual === "winme"
+          ? "MARKET / REWARDS / MISSIONS"
+          : project.visual === "carwash"
+            ? "POINT OF SALES"
+            : "LEARN / BUILD / GROW"}
+        <Icon name="diagonal" size={18} />
+      </span>
+    </div>
+  );
 }
 
-export default Work
+export default function Work({ language }) {
+  const text = copy[language];
+  const [filter, setFilter] = useState("all");
+  const [expanded, setExpanded] = useState(false);
+  const matching = projects.filter(
+    (project) => filter === "all" || project.category === filter,
+  );
+  const visible =
+    expanded || filter !== "all"
+      ? matching
+      : matching.slice(0, INITIAL_PROJECT_COUNT);
+
+  return (
+    <section id="work" className="section work-section">
+      <div className="container">
+        <div className="section-heading">
+          <div>
+            <p className="section-label">{text.workLabel}</p>
+            <h2 className="section-title">{text.workTitle}</h2>
+          </div>
+          <p>{text.workIntro}</p>
+        </div>
+        <div className="project-toolbar">
+          <div
+            className="project-filters"
+            role="group"
+            aria-label={language === "id" ? "Filter proyek" : "Filter projects"}
+          >
+            {Object.entries(text.filters).map(([value, label]) => (
+              <button
+                key={value}
+                type="button"
+                aria-pressed={filter === value}
+                onClick={() => {
+                  setFilter(value);
+                  setExpanded(false);
+                }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          <span className="project-count" role="status">
+            {matching.length} {text.projectCount}
+          </span>
+        </div>
+        <div className="project-grid" id="project-grid">
+          {visible.map((project) => (
+            <article
+              className={`project-card ${project.featured && filter === "all" ? "project-featured" : ""}`}
+              key={project.id}
+            >
+              <ProjectVisual project={project} language={language} />
+              <div className="project-info">
+                <p className="project-type">{project.type[language]}</p>
+                <h3>{project.title}</h3>
+                <p className="project-description">
+                  {project.description[language]}
+                </p>
+                <div className="tags">
+                  {project.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+                {project.url ? (
+                  <a
+                    className="project-link"
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${project.source ? text.source : text.live}: ${project.title}`}
+                  >
+                    {project.source ? text.source : text.live}
+                    <Icon name="diagonal" size={18} />
+                  </a>
+                ) : (
+                  <span className="project-private">
+                    <Icon name="layers" size={15} />
+                    {text.internal}
+                  </span>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+        {filter === "all" && matching.length > INITIAL_PROJECT_COUNT && (
+          <div className="more-projects">
+            <button
+              type="button"
+              className="button button-secondary"
+              onClick={() => setExpanded(!expanded)}
+              aria-expanded={expanded}
+              aria-controls="project-grid"
+            >
+              {expanded ? text.less : text.more}
+              <Icon name={expanded ? "close" : "down"} size={18} />
+            </button>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
